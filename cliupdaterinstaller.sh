@@ -8,7 +8,11 @@ if [ -d "$folder_path" ]; then
 else
 	echo "Creating Programs folder..."
 	mkdir $folder_path
-	echo "Created."
+ 	if [ -d "$folder_path" ]; then
+		echo "Created."
+  	else
+   		echo "Failed."
+     	fi
 fi
 
 if [ -e "$file_path" ]; then
@@ -17,7 +21,11 @@ else
 	echo "Adding nobara-update file..."
 	echo "sudo dnf update rpmfusion-nonfree-release rpmfusion-free-release fedora-repos nobara-repos --refresh && sudo dnf distro-sync --refresh && sudo dnf update --refresh" >> $file_path
 	chmod +x $file_path
-	echo "Added."
+ 	if [ -e "$file_path" ]; then
+		echo "Added."
+  	else
+   		echo "Failed."
+     	fi
 fi
 
 echo "Adding folder to PATH..."
@@ -25,7 +33,11 @@ if grep -q "$line" "$HOME/.bashrc"; then
 	echo "Folder is already in PATH."
 else
 	echo $line >> $HOME/.bashrc
-	echo "Added."
+ 	if grep -q "$line" "$HOME/.bashrc"; then
+		echo "Added."
+  	else
+   		echo "Failed."
+     	fi
 fi
 echo "Successfully installed. Restart your shell, subsequently run nobara-update to update your system."
 
