@@ -19,7 +19,7 @@ if [ -e "$file_path" ]; then
 	echo "The nobara-update file already exists."
 else
 	echo "Adding nobara-update file..."
-	echo "sudo dnf update rpmfusion-nonfree-release rpmfusion-free-release fedora-repos nobara-repos --refresh && sudo dnf distro-sync --refresh && sudo dnf update --refresh" >> $file_path
+	echo "sudo dnf update rpmfusion-nonfree-release rpmfusion-free-release fedora-repos nobara-repos --refresh && sudo dnf distro-sync --refresh && sudo dnf update --refresh && flatpak update" >> $file_path
 	chmod +x $file_path
  	if [ -e "$file_path" ]; then
 		echo "Added."
